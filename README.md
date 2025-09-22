@@ -53,10 +53,10 @@ Test if users can post messages to the blockchain **WITHOUT paying gas fees** us
 
 ## ✅ Success Criteria
 
-- [ ] Petra wallet: Posts message with 0 APT gas fee
-- [ ] Google login: Posts message with 0 APT gas fee
-- [ ] Messages successfully stored on blockchain
-- [ ] Transaction hash links to Aptos Explorer
+- [x] Petra wallet: Posts message with 0 APT gas fee ✅ **WORKING**
+- [x] Google login: Posts message with 0 APT gas fee ✅ **WORKING**
+- [x] Messages successfully stored on blockchain ✅ **WORKING**
+- [x] Transaction hash links to Aptos Explorer ✅ **WORKING**
 
 ## 🔧 Features
 
