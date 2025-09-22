@@ -34,10 +34,18 @@ export default function Home() {
           function: `${BILLBOARD_ADDRESS}::billboard::send_message`,
           functionArguments: [BILLBOARD_ADDRESS, message],
         },
+        options: {
+          maxGasAmount: 50,
+        },
       };
 
-      console.log("Submitting transaction:", transaction);
-      const response = await signAndSubmitTransaction(transaction);
+      const transactionWithFeePayer = {
+        ...transaction,
+        withFeePayer: true,
+      };
+
+      console.log("Submitting transaction:", transactionWithFeePayer);
+      const response = await signAndSubmitTransaction(transactionWithFeePayer);
       console.log("Transaction submitted:", response);
 
       // Ensure response.hash is a string
