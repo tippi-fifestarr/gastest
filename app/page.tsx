@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useWallet, type InputTransactionData, WalletName } from "@aptos-labs/wallet-adapter-react";
+import { useWallet, type InputTransactionData } from "@aptos-labs/wallet-adapter-react";
 import { aptos } from "@/utils/aptosClient";
 
 const BILLBOARD_ADDRESS = "0x24051bca580d28e80a340a17f87c99def0cc0bde05f9f9d88e8eebdfad1cfb03";
@@ -34,18 +34,15 @@ export default function Home() {
           function: `${BILLBOARD_ADDRESS}::billboard::send_message`,
           functionArguments: [BILLBOARD_ADDRESS, message],
         },
+        // withFeePayer: true,  // ← REMOVED to confirm redundancy
         options: {
           maxGasAmount: 50,
+          gasUnitPrice: 100,
         },
       };
 
-      const transactionWithFeePayer = {
-        ...transaction,
-        withFeePayer: true,
-      };
-
-      console.log("Submitting transaction:", transactionWithFeePayer);
-      const response = await signAndSubmitTransaction(transactionWithFeePayer);
+      console.log("Submitting transaction:", transaction);
+      const response = await signAndSubmitTransaction(transaction);
       console.log("Transaction submitted:", response);
 
       // Ensure response.hash is a string
@@ -206,9 +203,9 @@ export default function Home() {
         <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <h3 className="font-semibold text-yellow-800 mb-2">⚠️ Wallet Connection Notes:</h3>
           <ul className="text-sm text-yellow-700 space-y-1">
-            <li>• If you don't see Google login option, try installing Petra wallet first</li>
+            <li>• If you don&apos;t see Google login option, try installing Petra wallet first</li>
             <li>• Some wallet options appear only when compatible extensions are installed</li>
-            <li>• Gas Station sponsorship may not work if function isn't configured properly</li>
+            <li>• Gas Station sponsorship may not work if function isn&apos;t configured properly</li>
             <li>• Check browser console for detailed error messages</li>
           </ul>
         </div>
