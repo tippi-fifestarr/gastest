@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { WalletProvider } from "@/components/WalletProvider";
+import GitHubCorner from "@/components/GitHubCorner";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex flex-col">
         <WalletProvider>
-          {children}
+          <GitHubCorner href="https://github.com/tippi-fifestarr/gastest" />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </WalletProvider>
       </body>
     </html>
